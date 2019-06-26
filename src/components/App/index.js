@@ -2,6 +2,9 @@
  * Import
  */
 import React from 'react';
+import Sidebar from '../Sidebar';
+import Main from '../Main';
+
 
 /**
  * Local import
@@ -9,15 +12,15 @@ import React from 'react';
 // Composants
 
 // Styles et assets
-import './app.sass';
+import './index.scss';
 
 /**
  * Code
  */
 const App = () => (
   <div id="app">
-    <h1 id="app-title">Modèle React</h1>
-    <p id="app-content">Hello tout le monde :)</p>
+    <Sidebar />
+    <Main />
   </div>
 );
 
