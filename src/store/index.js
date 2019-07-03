@@ -1,7 +1,8 @@
 /*
  * Npm import
  */
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import promise from 'redux-promise-middleware';
 
 /*
  * Local import
@@ -9,17 +10,21 @@ import { createStore } from 'redux';
 // Reducer
 import reducer from 'src/store/reducer';
 
+const appliedMiddlewares = (applyMiddleware(promise));
+
 /*
  * Code
  */
 const devTools = [];
-if (window.devToolsExtension) {
-  devTools.push(window.devToolsExtension());
+if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+  devTools.push(window.__REDUX_DEVTOOLS_EXTENSION__());
 }
 
-// createStore
-const store = createStore(reducer, ...devTools);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancers = composeEnhancers(appliedMiddlewares);
 
+// createStore
+const store = createStore(reducer, enhancers);
 /*
  * Export
  */

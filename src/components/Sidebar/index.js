@@ -3,22 +3,35 @@ import PropTypes from 'prop-types';
 
 import './sidebar.scss';
 
-const Sidebar = () => (
+
+const Sidebar = ({ movies, selectedCategory, refreshCategoryList, selectioned }) => (
   <div id="sidebar">
     <h1>Filtres</h1>
     <div>
       <div className="container-filtre">
-        <span className="coched"></span>
-        <p>Action</p>
-      </div> 
-      <div className="container-filtre">
-        <span className="coche"></span>
-        <p>Action</p>
+        <span
+          className={selectioned === '' ? 'coched' : 'coche'}
+          category="reset"
+          onClick={() => {
+            refreshCategoryList();
+          }}
+        >.
+        </span>
+        <p className="reset-filtre">TOUS LES FILMS</p>
       </div>
-      <div className="container-filtre">
-        <span className="coche"></span>
-        <p>Action</p>
-      </div>   
+      {movies.map((menuItem, index) => (
+        <div className="container-filtre" key={index}>
+          <span
+            className={selectioned === movies[index] ? 'coched' : 'coche'}
+            category={menuItem}
+            onClick={() => {
+              selectedCategory(menuItem);
+            }}
+          >.
+          </span>
+          <p>{ menuItem }</p>
+        </div>
+      ))}
     </div>
     <div className="affichage">
       <p>Résultats par page</p>
@@ -38,7 +51,7 @@ const Sidebar = () => (
 //     loginMessage: PropTypes.string.isRequired,
 //     loginStatus: PropTypes.string.isRequired,
 //   };
-  
+
   /**
    * Export
    */

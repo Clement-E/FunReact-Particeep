@@ -34,7 +34,14 @@
     }
 
     .icone {
-        cursor: pointer;
+        cursor: pointer;     
+        color: #d1d1d1;    
+    }
+    .upvoted {
+        color:rgb(101, 211, 28);
+    }
+    .downvoted {
+        color: rgb(209, 40, 40);
     }
 
     .card-vote-no, .card-vote-yes {

@@ -1,24 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Card from './Card/Card';
+import Card from 'src/containers/Card';
 
 import './main.scss';
 
-const Main = () => (
+const Main = ({ movies, isLoading, filtre, filteredList }) => (
   <div id="main">
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
+    {isLoading === true && (
+      <div className="loading">
+        <p>Chargement des films en cours</p>
+      </div>
+    )}
+    {isLoading === false && filtre === '' && movies.map(element => (
+      <Card
+        key={element.id}
+        id={element.id}
+        title={element.title}
+        category={element.category}
+        likes={element.likes}
+        dislikes={element.dislikes}
+        upvoted={element.upvoted}
+        downvoted={element.downvoted}
+      />
+    ))}
+    {isLoading === false && filteredList.map(element => (
+      <Card
+        key={element.id}
+        id={element.id}
+        title={element.title}
+        category={element.category}
+        likes={element.likes}
+        dislikes={element.dislikes}
+        upvoted={element.upvoted}
+        downvoted={element.downvoted}
+      />
+    ))}
   </div>
 );
 
