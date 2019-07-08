@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { selectedCategory, refreshCategoryList } from 'src/store/reducer';
+import { selectedCategory, refreshCategoryList, moviesPerPage } from 'src/store/reducer';
 /**
  * Local import
  */
@@ -10,6 +10,7 @@ import Sidebar from 'src/components/Sidebar';
 const mapStateToProps = state => ({
   movies: [...new Set(state.data.map(element => element.category))],
   selectioned: state.filtre,
+  pagination: state.pagination,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,6 +19,9 @@ const mapDispatchToProps = dispatch => ({
   },
   refreshCategoryList: () => {
     dispatch(refreshCategoryList());
+  },
+  moviesPerPage: (number) => {
+    dispatch(moviesPerPage(number));
   },
 });
 

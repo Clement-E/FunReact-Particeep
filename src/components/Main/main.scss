@@ -1,3 +1,5 @@
+@import 'src/styles/_vars.scss';
+
 #main {
     width: 80%;
     display:flex;
@@ -8,5 +10,32 @@
 
     .loading {
         margin-top:15%;
+    }
+
+    .navigation {
+        width: 100%;
+        display:flex;
+        justify-content:center;
+        margin-top: 25px;
+    }
+
+    .btn-nav {
+        padding: 7px 0px 5px;
+        background-color: rgb(58, 57, 57);
+        font-weight: bold;
+        color:white;
+        margin: 0 10px;
+        width: 100px;
+        text-align:center;
+        transition: 1000ms;
+        cursor: pointer;
+    }
+
+    .btn-nav:hover {
+        background-color: black;
+    }
+
+    .btn-nav-hidden {
+        display: none;
     }
 }

@@ -2,8 +2,9 @@
 
 #sidebar {
     width:20%;
-    background-color: $rouge-clair;
-    border-right: 8px solid $rouge-fonce;
+    background: rgb(240,94,80);
+    background: linear-gradient(90deg, rgba(240,94,80,0.8) 0%, rgba(240,110,80,0.80) 25%, rgba(240,94,80,1) 100%);
+    border-right: 8px solid #db5043;
     padding: 25px 5px 0px 25px;
     height: 100vh;
     display: flex;
@@ -12,6 +13,7 @@
     align-items: center;
     box-shadow: 2px -1px 14px 0px rgba(122, 122, 122, 0.664);
     position:fixed;
+    background-position: top left;
 
     h1 {
         display: inline-block;
@@ -66,11 +68,14 @@
         margin-top:40px;
         margin-left:-25px;
         position: absolute;
-        bottom: 15px;
-
+        bottom: 5%;
         
         p {
             margin-bottom:5px;
         }
+    }
+
+    .affichage a {
+        margin: 0 5px;
     }
 }

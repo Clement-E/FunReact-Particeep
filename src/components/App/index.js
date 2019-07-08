@@ -2,7 +2,7 @@
  * Import
  */
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Sidebar from 'src/containers/Sidebar';
 import Main from 'src/containers/Main';
 // promise
@@ -28,7 +28,6 @@ import './index.scss';
 // );
 
 class App extends React.Component {
-
   componentDidMount() {
     // resoudre la promesse et ajouter les films au reducer
     const { addMovies, promesseResolue } = this.props;
@@ -39,7 +38,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { movies, isLoading} = this.props;
+    const { movies, isLoading } = this.props;
     // const { testfunction } = this.props;
     return (
       <div id="app">
@@ -47,7 +46,7 @@ class App extends React.Component {
         <Main
           movies={movies}
           isLoading={isLoading}
-        />;
+        />
       </div>
     );
   }
@@ -57,6 +56,9 @@ class App extends React.Component {
  */
 export default App;
 
-// App.propTypes = {
-//   fetchData: PropTypes.func.isRequired,
-// };
+App.propTypes = {
+  addMovies: PropTypes.func.isRequired,
+  promesseResolue: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};

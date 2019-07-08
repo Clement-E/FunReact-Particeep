@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { upVote, downVote } from 'src/store/reducer';
+import { upVote, downVote, removeCard } from 'src/store/reducer';
 /**
  * Local import
  */
@@ -16,6 +16,9 @@ const mapDispatchToProps = dispatch => ({
   },
   downVote: (newDislikes, id) => {
     dispatch(downVote(newDislikes, id));
+  },
+  removeCard: (id) => {
+    dispatch(removeCard(id));
   },
 });
 

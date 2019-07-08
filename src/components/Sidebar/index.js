@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import './sidebar.scss';
 
-
-const Sidebar = ({ movies, selectedCategory, refreshCategoryList, selectioned }) => (
+const Sidebar = ({
+  movies, selectedCategory, refreshCategoryList, selectioned,
+  pagination, moviesPerPage,
+}) => (
   <div id="sidebar">
     <h1>Filtres</h1>
     <div>
@@ -15,7 +17,7 @@ const Sidebar = ({ movies, selectedCategory, refreshCategoryList, selectioned })
           onClick={() => {
             refreshCategoryList();
           }}
-        >.
+        >
         </span>
         <p className="reset-filtre">TOUS LES FILMS</p>
       </div>
@@ -27,7 +29,7 @@ const Sidebar = ({ movies, selectedCategory, refreshCategoryList, selectioned })
             onClick={() => {
               selectedCategory(menuItem);
             }}
-          >.
+          >
           </span>
           <p>{ menuItem }</p>
         </div>
@@ -36,23 +38,32 @@ const Sidebar = ({ movies, selectedCategory, refreshCategoryList, selectioned })
     <div className="affichage">
       <p>Résultats par page</p>
       <div>
-        <a href="#">4</a> - <a href="#">8</a> - <a href="#">12</a>
+        {pagination.map(element => (
+          <a
+            key={element}
+            href="#"
+            onClick={() => {
+              moviesPerPage(element);
+            }}
+          >
+            {element}
+          </a>
+        ))
+      }
       </div>
     </div>
   </div>
 );
 
-// Sidebar.propTypes = {
-//     username: PropTypes.string.isRequired,
-//     passwordInput: PropTypes.string.isRequired,
-//     updateFormField: PropTypes.func.isRequired,
-//     connectUser: PropTypes.func.isRequired,
-//     isConnected: PropTypes.bool.isRequired,
-//     loginMessage: PropTypes.string.isRequired,
-//     loginStatus: PropTypes.string.isRequired,
-//   };
-
-  /**
-   * Export
-   */
+Sidebar.propTypes = {
+  movies: PropTypes.array.isRequired,
+  selectedCategory: PropTypes.func.isRequired,
+  refreshCategoryList: PropTypes.func.isRequired,
+  selectioned: PropTypes.string.isRequired,
+  pagination: PropTypes.array.isRequired,
+  moviesPerPage: PropTypes.func.isRequired,
+};
+/**
+ * Export
+ */
 export default Sidebar;
