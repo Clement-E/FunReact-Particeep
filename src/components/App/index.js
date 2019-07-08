@@ -12,7 +12,6 @@ import { movies$ } from '../../datas/movies';
 /**
  * Local import
  */
-// Composants
 
 // Styles et assets
 import './index.scss';
@@ -20,18 +19,11 @@ import './index.scss';
 /**
  * Code
  */
-// const App = () => (
-//   <div id="app">
-//     <Sidebar />
-//     <Main />
-//   </div>
-// );
 
 class App extends React.Component {
   componentDidMount() {
     // resoudre la promesse et ajouter les films au reducer
     const { addMovies, promesseResolue } = this.props;
-    // console.log(movies$.then(values => (console.log('resolue et les values sont:', values))));
     movies$
       .then(values => (addMovies(values)))
       .then(() => (promesseResolue()));
@@ -39,7 +31,6 @@ class App extends React.Component {
 
   render() {
     const { movies, isLoading } = this.props;
-    // const { testfunction } = this.props;
     return (
       <div id="app">
         <Sidebar />

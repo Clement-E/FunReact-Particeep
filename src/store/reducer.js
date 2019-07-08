@@ -31,10 +31,6 @@ export const NEXT_PAGE = 'NEXT_PAGE';
  * Selectors
  */
 
-// export const getMovies = state => (
-//   state.data
-// );
-
 /**
  * Traitements
  */
@@ -74,7 +70,7 @@ const reducer = (state = initialState, action = {}) => {
             return {
               ...movie,
               likes: action.newLikes,
-              upvoted: true,
+              upvoted: true, // ajout d'une propriété à la carte pour limiter le nombre d'upvote
             };
           }
           return movie;
@@ -88,7 +84,7 @@ const reducer = (state = initialState, action = {}) => {
             return {
               ...movie,
               dislikes: action.newDislikes,
-              downvoted: true,
+              downvoted: true, // ajout d'une propriété à la carte pour limiter le nombre de downvote
             };
           }
           return movie;

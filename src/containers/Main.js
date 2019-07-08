@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
     .splice((state.currentPage * state.moviesPerPage) - state.moviesPerPage, state.moviesPerPage),
   filteredList: (state.data.filter(movie => movie.category === state.filtre))
     .splice((state.currentPage * state.offset) - state.offset, state.moviesPerPage),
+  // affichage des btn de nav en fonction du type de resultat filtré ou non
   displayPreviousBtn: state.currentPage > 1,
   displayNextBtn: state.currentPage * state.moviesPerPage <= state.data.length,
   displayPrevFilteredBtn: state.currentPage > 1,
